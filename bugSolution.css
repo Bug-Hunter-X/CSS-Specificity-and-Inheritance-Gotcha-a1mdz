@@ -1,0 +1,31 @@
+Understanding the order of precedence is crucial to resolve the issue:
+
+1. **Specificity:** The more specific a selector, the higher its precedence.  This means that `div p` is more specific than `div`, therefore the style will cascade to the `div p` selector.
+
+2. **Inheritance:** The `inherit` keyword takes precedence over other declarations in CSS if the inherited style has higher specificity than the defined one. 
+
+3. **!important:** The `!important` flag overrides all other style declarations.
+
+To fix the problem, developers should carefully examine their CSS for any selectors that might cause unexpected inheritance behaviors. They should prioritize style specificity and avoid relying solely on the `inherit` keyword unless it's absolutely necessary.
+
+Solutions may include:
+
+* **Using more specific selectors:** Ensure that selectors are specific enough to target the desired elements without relying on inheritance to ensure correct style application.
+* **Avoiding `inherit` if possible:**  If you encounter problems with inheritance, it is better to directly define styles instead of depending on inheritance. 
+* **Using `!important` judiciously:** This flag should be used sparingly and only when absolutely necessary, as it can make CSS harder to maintain.
+
+The `bugSolution.css` shows an example of how to structure CSS to avoid the unexpected inheritance issue by directly defining the style for the `div p` element instead of relying on inheritance: 
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green;
+}
+```
